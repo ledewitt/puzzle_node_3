@@ -10,7 +10,13 @@ def choose_word(misspelled, words)
   # First find all the subsequences of the misspelled word.
   
   p misspelled
-  p misspelled.size
+  # p misspelled.size
+  
+  misspelled.size.times do |f|
+    (misspelled.size.times - f) do |g|
+      p misspelled[f,(misspelled.size - g)]
+    end
+  end
 end
 
 #####  MAIN BODY OF CODE #####
