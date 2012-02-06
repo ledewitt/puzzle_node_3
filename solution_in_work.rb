@@ -4,7 +4,13 @@
 #####  METHODS #####
 
 def choose_word(misspelled, words)
-  p "I am here."
+  # TO DO: For each test case output a single line with the word that has
+  # the longest common sub-sequence with the search query word.
+  
+  # First find all the subsequences of the misspelled word.
+  
+  p misspelled
+  p misspelled.size
 end
 
 #####  MAIN BODY OF CODE #####
@@ -18,8 +24,8 @@ open ("SAMPLE_INPUT.txt") do |input|
     2.times do
       words << input.gets.strip      # Put the candidate words into the array
     end
-    p misspelled
-    p words
+    # p misspelled
+    # p words
     # I have the misspelled word and an array of candidate words must
     # now figure out my favorite of those and write to an output file.
    
