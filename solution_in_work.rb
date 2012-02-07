@@ -9,8 +9,7 @@ def choose_word(misspelled, words)
   
   # First find all the subsequences of the misspelled word.
   
-  p misspelled
-  # p misspelled.size
+  matching_string_size = [0,0]
   
   chars = misspelled.chars.to_a # Turn our string into an array of characters
   
@@ -18,6 +17,12 @@ def choose_word(misspelled, words)
     # p misspelled[f,misspelled.size]
     chars.each_cons(misspelled.size - l) do |m|
       p m.join
+      p words[0].strip
+      if words[0].include? m.join
+        matching_string_size[0] = m.join.size
+        p m.join.size
+        break
+      end
     end
   end
 end
