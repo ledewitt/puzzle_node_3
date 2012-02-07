@@ -12,9 +12,12 @@ def choose_word(misspelled, words)
   p misspelled
   # p misspelled.size
   
-  misspelled.size.times do |f|
-    (misspelled.size.times - f) do |g|
-      p misspelled[f,(misspelled.size - g)]
+  chars = misspelled.chars.to_a # Turn our string into an array of characters
+  
+  chars.size.times do |l|
+    # p misspelled[f,misspelled.size]
+    chars.each_cons(misspelled.size - l) do |m|
+      p m.join
     end
   end
 end
