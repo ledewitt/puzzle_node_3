@@ -3,42 +3,39 @@
 
 #####  METHODS #####
 
+def longest_matching_string(misspelled, candidate)
+  chars = misspelled.chars.to_a
+  
+  chars.size.times do |l|
+    chars.each_cons(misspelled.size - l) do |m|
+      if candidate.include? m.join
+        return m.join.size
+      end
+    end
+  end
+end   
+
 def choose_word(misspelled, words)
   # TO DO: For each test case output a single line with the word that has
   # the longest common sub-sequence with the search query word.
   
-  # First find all the subsequences of the misspelled word.
-  
   matching_string_size = [0,0]
   
-  chars = misspelled.chars.to_a # Turn our string into an array of characters
+  matching_string_size[0] = longest_matching_string(misspelled, words[0]) 
+  matching_string_size[1] = longest_matching_string(misspelled, words[1])
   
-  chars.size.times do |l|
-    # p misspelled[f,misspelled.size]
-    chars.each_cons(misspelled.size - l) do |m|
-      # p m.join
-      # p words[0].strip
-      if words[0].include? m.join
-        matching_string_size[0] = m.join.size
-        p m.join.size
-        p m.join
-        p words[0]
-        break
-      end
-      if words[1].include? m.join
-        matching_string_size[1] = m.join.size
-        p m.join.size
-        p m.join
-        p words[1]
-        break
-      end
-    end
+  # p matching_string_size
+  
+  if matching_string_size[0] < matching_string_size[1]
+    return words[1]
+  else
+    return words[0]
   end
 end
 
 #####  MAIN BODY OF CODE #####
 
-open ("SAMPLE_INPUT.txt") do |input|
+open ("INPUT.txt") do |input|
   test_cases = input.gets.to_i       # Pull the number of cases from top of file
   test_cases.times do
     input.gets                       # Remove blank line
@@ -52,6 +49,7 @@ open ("SAMPLE_INPUT.txt") do |input|
     # I have the misspelled word and an array of candidate words must
     # now figure out my favorite of those and write to an output file.
    
-    choose_word(misspelled, words)
+    choosen_word = choose_word(misspelled, words)
+    puts choosen_word
   end
 end
