@@ -16,11 +16,20 @@ def choose_word(misspelled, words)
   chars.size.times do |l|
     # p misspelled[f,misspelled.size]
     chars.each_cons(misspelled.size - l) do |m|
-      p m.join
-      p words[0].strip
+      # p m.join
+      # p words[0].strip
       if words[0].include? m.join
         matching_string_size[0] = m.join.size
         p m.join.size
+        p m.join
+        p words[0]
+        break
+      end
+      if words[1].include? m.join
+        matching_string_size[1] = m.join.size
+        p m.join.size
+        p m.join
+        p words[1]
         break
       end
     end
